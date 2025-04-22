@@ -6,72 +6,106 @@
   <title>AI1000168 的科技空间</title>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
   <style>
-    html, body {
+    body {
+      font-family: 'Orbitron', sans-serif;
       margin: 0;
       padding: 0;
-      height: 100%;
-      overflow: hidden;
-      font-family: 'Orbitron', sans-serif;
-      background-color: #0d0d0d;
+      background-color: #0c0c0c;
       color: #fff;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
     }
     #particles-js {
       position: absolute;
+      top: 0;
+      left: 0;
       width: 100%;
       height: 100%;
       z-index: 0;
     }
     .content {
-      position: relative;
       z-index: 1;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      height: 100%;
       text-align: center;
       padding: 20px;
     }
     h1 {
-      font-size: 3em;
-      color: #00ffff;
+      font-size: 3.5em;
+      color: #FFD700;
       animation: glow 2s ease-in-out infinite alternate;
     }
     @keyframes glow {
-      from { text-shadow: 0 0 10px #00ffff; }
-      to { text-shadow: 0 0 20px #00ffff, 0 0 30px #00ffff; }
+      from { text-shadow: 0 0 10px #FFD700, 0 0 20px #FFD700, 0 0 30px #FFD700; }
+      to { text-shadow: 0 0 20px #FFD700, 0 0 30px #FFD700, 0 0 40px #FFD700; }
     }
     p {
       font-size: 1.2em;
-      max-width: 600px;
-      margin: 20px 0;
+      color: #B0B0B0;
+      margin-top: 20px;
     }
     .button {
-      margin-top: 20px;
       padding: 12px 30px;
       font-size: 1.2em;
-      color: #00ffff;
-      border: 2px solid #00ffff;
+      color: #FFD700;
+      border: 2px solid #FFD700;
       border-radius: 30px;
       text-decoration: none;
+      margin-top: 30px;
       transition: all 0.3s ease;
     }
     .button:hover {
-      background: #00ffff;
-      color: #000;
+      background-color: #FFD700;
+      color: #0c0c0c;
+    }
+    .avatar {
+      margin-top: 30px;
+      border-radius: 50%;
+      width: 150px;
+      height: 150px;
+      background: url('https://www.example.com/your-avatar.jpg') no-repeat center center;
+      background-size: cover;
+      box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+      border: 3px solid #FFD700;
     }
     .footer {
       position: absolute;
       bottom: 20px;
-      width: 100%;
-      text-align: center;
-      font-size: 0.9em;
-      color: #aaa;
+      font-size: 1em;
+      color: #B0B0B0;
       z-index: 1;
     }
     .footer a {
-      color: #00ffff;
+      color: #FFD700;
       text-decoration: none;
+    }
+    .project-section {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin-top: 50px;
+    }
+    .project-card {
+      background-color: #1a1a1a;
+      width: 250px;
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+      box-shadow: 0 0 15px rgba(255, 215, 0, 0.2);
+    }
+    .project-card h3 {
+      font-size: 1.5em;
+      color: #FFD700;
+    }
+    .project-card p {
+      color: #B0B0B0;
+      margin-top: 10px;
+    }
+    #qr-code {
+      width: 150px;
+      margin-top: 30px;
     }
   </style>
 </head>
@@ -79,23 +113,44 @@
   <div id="particles-js"></div>
   <div class="content">
     <h1>你好，我是 AI1000168</h1>
-    <p>专注于人工智能、量化交易与自动化系统开发。探索科技的边界，用代码构建未来。</p>
+    <div class="avatar"></div>
+    <p>探索人工智能、量化交易与自动化系统的边界，用代码构建未来。</p>
     <a class="button" href="https://t.me/AI1000168" target="_blank">联系我：@AI1000168</a>
-  </div>
-  <div class="footer">
-    <p>© 2025 AI1000168 | <a href="https://github.com/ai100088">GitHub</a></p>
+    <div id="qr-code">
+      <img src="https://api.qrserver.com/v1/create-qr-code/?data=https://t.me/AI1000168&size=150x150" alt="QR Code">
+    </div>
   </div>
 
-  <!-- 粒子动画背景 JS -->
+  <!-- 项目展示 -->
+  <div class="project-section">
+    <div class="project-card">
+      <h3>AI 系统</h3>
+      <p>构建高效、智能的量化交易系统，优化投资策略。</p>
+    </div>
+    <div class="project-card">
+      <h3>自动化交易</h3>
+      <p>实现自动化加密货币交易，提升投资效率。</p>
+    </div>
+    <div class="project-card">
+      <h3>量化算法</h3>
+      <p>使用量化算法进行市场数据分析，精确预测行情。</p>
+    </div>
+  </div>
+
+  <div class="footer">
+    <p>© 2025 AI1000168 | <a href="https://github.com/ai100088" target="_blank">GitHub</a></p>
+  </div>
+
+  <!-- 粒子背景效果 -->
   <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
   <script>
     particlesJS("particles-js", {
       "particles": {
         "number": {
-          "value": 80,
+          "value": 100,
           "density": { "enable": true, "value_area": 800 }
         },
-        "color": { "value": "#00ffff" },
+        "color": { "value": "#FFD700" },
         "shape": {
           "type": "circle",
           "stroke": { "width": 0, "color": "#000" }
@@ -113,13 +168,13 @@
         "line_linked": {
           "enable": true,
           "distance": 150,
-          "color": "#00ffff",
+          "color": "#FFD700",
           "opacity": 0.4,
           "width": 1
         },
         "move": {
           "enable": true,
-          "speed": 4,
+          "speed": 6,
           "direction": "none",
           "random": false,
           "straight": false,
