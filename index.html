@@ -3,198 +3,168 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>AI1000168 的科技空间</title>
+  <title>AI1000168 的未来空间</title>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
   <style>
-    body {
-      font-family: 'Orbitron', sans-serif;
+    * {
       margin: 0;
       padding: 0;
-      background-color: #0c0c0c;
-      color: #fff;
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      overflow: hidden;
+      box-sizing: border-box;
     }
-    #particles-js {
+
+    body {
+      font-family: 'Orbitron', sans-serif;
+      background: radial-gradient(ellipse at center, #0f0f0f 0%, #000 100%);
+      color: #FFD700;
+      overflow-x: hidden;
+      min-height: 100vh;
+      position: relative;
+    }
+
+    #stars {
       position: absolute;
-      top: 0;
-      left: 0;
       width: 100%;
       height: 100%;
+      background: transparent url('https://i.ibb.co/2hYkZf5/stars.gif') repeat;
       z-index: 0;
+      animation: moveStars 100s linear infinite;
     }
-    .content {
-      z-index: 1;
+
+    @keyframes moveStars {
+      0% {background-position: 0 0;}
+      100% {background-position: -10000px 5000px;}
+    }
+
+    .container {
+      position: relative;
+      z-index: 2;
+      padding: 60px 20px;
       text-align: center;
-      padding: 20px;
     }
+
     h1 {
       font-size: 3.5em;
       color: #FFD700;
-      animation: glow 2s ease-in-out infinite alternate;
+      text-shadow: 0 0 20px #FFD700, 0 0 40px #FFEA00;
+      animation: pulse 3s infinite;
     }
-    @keyframes glow {
-      from { text-shadow: 0 0 10px #FFD700, 0 0 20px #FFD700, 0 0 30px #FFD700; }
-      to { text-shadow: 0 0 20px #FFD700, 0 0 30px #FFD700, 0 0 40px #FFD700; }
+
+    @keyframes pulse {
+      0% { text-shadow: 0 0 20px #FFD700; }
+      50% { text-shadow: 0 0 40px #FFEA00; }
+      100% { text-shadow: 0 0 20px #FFD700; }
     }
-    p {
-      font-size: 1.2em;
-      color: #B0B0B0;
-      margin-top: 20px;
-    }
-    .button {
-      padding: 12px 30px;
-      font-size: 1.2em;
-      color: #FFD700;
-      border: 2px solid #FFD700;
-      border-radius: 30px;
-      text-decoration: none;
-      margin-top: 30px;
-      transition: all 0.3s ease;
-    }
-    .button:hover {
-      background-color: #FFD700;
-      color: #0c0c0c;
-    }
+
     .avatar {
-      margin-top: 30px;
-      border-radius: 50%;
       width: 150px;
       height: 150px;
-      background: url('https://www.example.com/your-avatar.jpg') no-repeat center center;
+      border-radius: 50%;
+      margin: 30px auto;
+      background-image: url('https://i.ibb.co/6ZybnKc/avatar-example.jpg');
       background-size: cover;
-      box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+      box-shadow: 0 0 20px rgba(255, 215, 0, 0.8);
       border: 3px solid #FFD700;
     }
-    .footer {
-      position: absolute;
-      bottom: 20px;
-      font-size: 1em;
-      color: #B0B0B0;
-      z-index: 1;
+
+    p {
+      font-size: 1.2em;
+      color: #ccc;
+      margin: 20px auto;
+      max-width: 700px;
     }
+
+    .button {
+      display: inline-block;
+      padding: 14px 32px;
+      margin-top: 25px;
+      font-size: 1.1em;
+      color: #000;
+      background: #FFD700;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: 0.3s ease;
+      box-shadow: 0 0 10px #FFD700, 0 0 20px #FFD700 inset;
+      text-decoration: none;
+    }
+
+    .button:hover {
+      background: #fff;
+      box-shadow: 0 0 20px #FFEA00, 0 0 30px #FFD700 inset;
+    }
+
+    .projects {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 50px;
+      gap: 30px;
+    }
+
+    .project-card {
+      background: rgba(20, 20, 20, 0.9);
+      border: 1px solid #FFD700;
+      border-radius: 15px;
+      padding: 20px;
+      width: 280px;
+      box-shadow: 0 0 15px rgba(255, 215, 0, 0.2);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .project-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 0 25px rgba(255, 215, 0, 0.4);
+    }
+
+    .project-card h3 {
+      color: #FFD700;
+      margin-bottom: 10px;
+    }
+
+    .project-card p {
+      color: #bbb;
+      font-size: 0.95em;
+    }
+
+    .footer {
+      margin-top: 60px;
+      font-size: 0.9em;
+      color: #888;
+    }
+
     .footer a {
       color: #FFD700;
       text-decoration: none;
     }
-    .project-section {
-      display: flex;
-      justify-content: center;
-      gap: 40px;
-      margin-top: 50px;
-    }
-    .project-card {
-      background-color: #1a1a1a;
-      width: 250px;
-      padding: 20px;
-      border-radius: 10px;
-      text-align: center;
-      box-shadow: 0 0 15px rgba(255, 215, 0, 0.2);
-    }
-    .project-card h3 {
-      font-size: 1.5em;
-      color: #FFD700;
-    }
-    .project-card p {
-      color: #B0B0B0;
-      margin-top: 10px;
-    }
-    #qr-code {
-      width: 150px;
-      margin-top: 30px;
-    }
+
   </style>
 </head>
 <body>
-  <div id="particles-js"></div>
-  <div class="content">
+  <div id="stars"></div>
+  <div class="container">
     <h1>你好，我是 AI1000168</h1>
     <div class="avatar"></div>
-    <p>探索人工智能、量化交易与自动化系统的边界，用代码构建未来。</p>
+    <p>欢迎来到我的未来空间。探索 AI、量化交易与自动化系统的世界。</p>
     <a class="button" href="https://t.me/AI1000168" target="_blank">联系我：@AI1000168</a>
-    <div id="qr-code">
-      <img src="https://api.qrserver.com/v1/create-qr-code/?data=https://t.me/AI1000168&size=150x150" alt="QR Code">
+
+    <div class="projects">
+      <div class="project-card">
+        <h3>AI 系统</h3>
+        <p>构建智能策略模型，实现市场行为预测与交易控制。</p>
+      </div>
+      <div class="project-card">
+        <h3>自动化交易</h3>
+        <p>机器人自动下单、套利、风控，一站式管理你的资产。</p>
+      </div>
+      <div class="project-card">
+        <h3>三角套利</h3>
+        <p>实时监控币安行情，执行三币种高频套利逻辑。</p>
+      </div>
+    </div>
+
+    <div class="footer">
+      <p>© 2025 AI1000168 | <a href="https://github.com/ai100088" target="_blank">GitHub</a></p>
     </div>
   </div>
-
-  <!-- 项目展示 -->
-  <div class="project-section">
-    <div class="project-card">
-      <h3>AI 系统</h3>
-      <p>构建高效、智能的量化交易系统，优化投资策略。</p>
-    </div>
-    <div class="project-card">
-      <h3>自动化交易</h3>
-      <p>实现自动化加密货币交易，提升投资效率。</p>
-    </div>
-    <div class="project-card">
-      <h3>量化算法</h3>
-      <p>使用量化算法进行市场数据分析，精确预测行情。</p>
-    </div>
-  </div>
-
-  <div class="footer">
-    <p>© 2025 AI1000168 | <a href="https://github.com/ai100088" target="_blank">GitHub</a></p>
-  </div>
-
-  <!-- 粒子背景效果 -->
-  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
-  <script>
-    particlesJS("particles-js", {
-      "particles": {
-        "number": {
-          "value": 100,
-          "density": { "enable": true, "value_area": 800 }
-        },
-        "color": { "value": "#FFD700" },
-        "shape": {
-          "type": "circle",
-          "stroke": { "width": 0, "color": "#000" }
-        },
-        "opacity": {
-          "value": 0.5,
-          "random": false,
-          "anim": { "enable": false }
-        },
-        "size": {
-          "value": 3,
-          "random": true,
-          "anim": { "enable": false }
-        },
-        "line_linked": {
-          "enable": true,
-          "distance": 150,
-          "color": "#FFD700",
-          "opacity": 0.4,
-          "width": 1
-        },
-        "move": {
-          "enable": true,
-          "speed": 6,
-          "direction": "none",
-          "random": false,
-          "straight": false,
-          "out_mode": "out"
-        }
-      },
-      "interactivity": {
-        "detect_on": "canvas",
-        "events": {
-          "onhover": { "enable": true, "mode": "repulse" },
-          "onclick": { "enable": true, "mode": "push" },
-          "resize": true
-        },
-        "modes": {
-          "repulse": { "distance": 100 },
-          "push": { "particles_nb": 4 }
-        }
-      },
-      "retina_detect": true
-    });
-  </script>
 </body>
 </html>
