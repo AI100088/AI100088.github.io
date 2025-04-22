@@ -1,180 +1,126 @@
 <!DOCTYPE html>
 <html lang="zh">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AI1000168 | Future System Architect</title>
+  <meta charset="UTF-8" />
+  <title>AI1000168 - Future System Architect</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <style>
-    body {
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap');
+
+    html, body {
       margin: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      padding: 0;
+      height: 100%;
       background: #000;
-      color: #FFD700;
-      overflow-x: hidden;
+      overflow: hidden;
+      font-family: 'Orbitron', sans-serif;
     }
 
-    .background {
+    canvas {
       position: fixed;
-      width: 100%;
-      height: 100%;
-      background: radial-gradient(ellipse at center, #111 0%, #000 100%);
+      top: 0;
+      left: 0;
       z-index: -1;
     }
 
-    .header {
+    .content {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
       text-align: center;
-      padding: 100px 20px 40px;
-    }
-
-    .header h1 {
-      font-size: 4em;
-      font-weight: bold;
-      background: linear-gradient(90deg, #FFD700, #FF8C00);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      text-shadow: 0 0 10px #FFD700, 0 0 20px #FF8C00;
-      animation: glow 2s infinite alternate;
-    }
-
-    .header p {
-      font-size: 1.5em;
-      color: #ccc;
-      font-style: italic;
-      margin-top: 10px;
-    }
-
-    .contact-btn {
-      margin-top: 20px;
-      padding: 12px 24px;
-      border: 2px solid #FFD700;
       color: #FFD700;
-      font-weight: bold;
-      text-decoration: none;
-      border-radius: 8px;
-      transition: all 0.3s ease-in-out;
+    }
+
+    h1 {
+      font-size: 4em;
+      margin-bottom: 0.3em;
+      text-shadow: 0 0 10px #FFD700, 0 0 30px #FFB300;
+      animation: glow 2s ease-in-out infinite alternate;
+    }
+
+    p {
+      font-size: 1.4em;
+      color: #ccc;
+      margin-bottom: 40px;
+      letter-spacing: 2px;
+      animation: fadeIn 1.5s ease-in;
+    }
+
+    a.button {
       display: inline-block;
+      padding: 14px 32px;
+      color: #FFD700;
+      border: 2px solid #FFD700;
+      text-decoration: none;
+      border-radius: 6px;
+      font-size: 1em;
+      letter-spacing: 2px;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 10px #FFD70044;
     }
 
-    .contact-btn:hover {
-      background-color: #FFD700;
+    a.button:hover {
+      background: #FFD700;
       color: #000;
-      box-shadow: 0 0 15px #FFD700;
-    }
-
-    .profile {
-      text-align: center;
-      margin-top: 50px;
-    }
-
-    .profile img {
-      width: 150px;
-      height: 150px;
-      border-radius: 50%;
-      border: 3px solid #FFD700;
       box-shadow: 0 0 20px #FFD700;
     }
 
-    .qr {
-      text-align: center;
-      margin-top: 30px;
-    }
-
-    .qr img {
-      width: 180px;
-      height: 180px;
-      border: 2px solid #FFD700;
-    }
-
-    .projects {
-      max-width: 900px;
-      margin: 60px auto;
-      padding: 20px;
-      background: rgba(255, 215, 0, 0.05);
-      border: 1px solid #FFD700;
-      border-radius: 12px;
-    }
-
-    .projects h2 {
-      text-align: center;
-      font-size: 2em;
-      margin-bottom: 30px;
-    }
-
-    .project-item {
-      background: rgba(255, 215, 0, 0.1);
-      margin: 20px 0;
-      padding: 20px;
-      border-left: 5px solid #FFD700;
-      border-radius: 8px;
-    }
-
-    .project-item h3 {
-      margin: 0 0 10px;
-      color: #FFCC00;
-    }
-
-    .project-item p {
-      margin: 0;
-      color: #ddd;
-    }
-
-    footer {
-      text-align: center;
-      padding: 30px 0;
-      font-size: 0.9em;
-      color: #777;
-    }
-
     @keyframes glow {
-      0% {
-        text-shadow: 0 0 10px #FFD700, 0 0 20px #FF8C00;
-      }
-      100% {
-        text-shadow: 0 0 20px #FF8C00, 0 0 30px #FFD700;
-      }
+      from { text-shadow: 0 0 8px #FFD700; }
+      to   { text-shadow: 0 0 20px #FFA500, 0 0 30px #FFD700; }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
   </style>
 </head>
 <body>
-  <div class="background"></div>
+  <canvas id="stars"></canvas>
 
-  <div class="header">
+  <div class="content">
     <h1>AI1000168</h1>
-    <p>未来系统架构师 · Future System Architect</p>
-    <a class="contact-btn" href="https://t.me/AI1000168" target="_blank">Contact Me</a>
+    <p>Future System Architect</p>
+    <a class="button" href="https://t.me/AI1000168" target="_blank">Contact Me</a>
   </div>
 
-  <div class="profile">
-    <!-- 替换下方图片为你的头像 -->
-    <img src="avatar.jpg" alt="头像">
-  </div>
+  <script>
+    const canvas = document.getElementById("stars");
+    const ctx = canvas.getContext("2d");
+    let stars = [];
 
-  <div class="qr">
-    <!-- 替换下方图片为你的二维码 -->
-    <img src="qrcode.png" alt="二维码">
-  </div>
+    function resize() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      stars = Array.from({length: 200}, () => ({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        radius: Math.random() * 1.5,
+        speed: Math.random() * 0.5 + 0.2
+      }));
+    }
 
-  <div class="projects">
-    <h2>我的项目 · My Projects</h2>
+    function draw() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.fillStyle = "#FFD700";
+      stars.forEach(star => {
+        ctx.beginPath();
+        ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
+        ctx.fill();
+        star.y += star.speed;
+        if (star.y > canvas.height) {
+          star.y = 0;
+          star.x = Math.random() * canvas.width;
+        }
+      });
+      requestAnimationFrame(draw);
+    }
 
-    <div class="project-item">
-      <h3>量化加密货币套利机器人</h3>
-      <p>跨交易所与三角套利引擎，支持自动化交易、资金管理和策略回测。</p>
-    </div>
-
-    <div class="project-item">
-      <h3>智能交易系统集成</h3>
-      <p>基于 Hummingbot 和 AI 模型构建自适应算法策略。</p>
-    </div>
-
-    <div class="project-item">
-      <h3>个人 AI 系统主页</h3>
-      <p>一个展示你身份、能力与项目的黑金风格科技网站。</p>
-    </div>
-  </div>
-
-  <footer>
-    © 2025 AI1000168. All Rights Reserved.
-  </footer>
+    window.addEventListener("resize", resize);
+    resize();
+    draw();
+  </script>
 </body>
 </html>
