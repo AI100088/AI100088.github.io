@@ -1,153 +1,226 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>个人主页</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Vave主页</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: #000;
+      color: #fff;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      overflow-x: hidden;
+    }
 
-        body {
-            font-family: Arial, sans-serif;
-            background: linear-gradient(45deg, #6a11cb, #2575fc);
-            color: white;
-            line-height: 1.6;
-            animation: gradient 5s ease infinite;
-        }
+    canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: -1;
+    }
 
-        @keyframes gradient {
-            0% { background: linear-gradient(45deg, #6a11cb, #2575fc); }
-            50% { background: linear-gradient(45deg, #f7a1b8, #ff6a00); }
-            100% { background: linear-gradient(45deg, #6a11cb, #2575fc); }
-        }
+    header {
+      text-align: center;
+      padding: 120px 20px 60px;
+    }
 
-        header {
-            text-align: center;
-            padding: 100px 20px;
-            font-size: 2.5em;
-            background-color: rgba(0, 0, 0, 0.5);
-            margin-bottom: 50px;
-        }
+    header h1 {
+      font-size: 3.5em;
+      background: linear-gradient(90deg, #00ffe7, #00b3ff, #0077ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: glow 3s ease-in-out infinite alternate;
+    }
 
-        header h1 {
-            font-size: 3em;
-            animation: fadeIn 2s ease-in-out;
-        }
+    header p {
+      font-size: 1.2em;
+      color: #ccc;
+      margin-top: 20px;
+    }
 
-        @keyframes fadeIn {
-            0% { opacity: 0; }
-            100% { opacity: 1; }
-        }
+    @keyframes glow {
+      from { text-shadow: 0 0 10px #00fff2; }
+      to { text-shadow: 0 0 30px #00fff2; }
+    }
 
-        header p {
-            font-size: 1.2em;
-            margin-top: 20px;
-        }
+    main {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 30px 20px;
+    }
 
-        main {
-            padding: 30px 20px;
-            background: rgba(255, 255, 255, 0.9);
-            border-radius: 15px;
-            margin: 0 10%;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-        }
+    h2 {
+      font-size: 2em;
+      border-bottom: 2px solid #00ffe7;
+      padding-bottom: 10px;
+      margin-bottom: 30px;
+      color: #00ffe7;
+    }
 
-        #projects, #contact {
-            margin-bottom: 50px;
-        }
+    .project-card {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(0, 255, 255, 0.2);
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 30px;
+      box-shadow: 0 0 15px rgba(0, 255, 255, 0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
 
-        h2 {
-            font-size: 2.5em;
-            margin-bottom: 20px;
-            color: #2575fc;
-        }
+    .project-card:hover {
+      transform: scale(1.02);
+      box-shadow: 0 0 30px rgba(0, 255, 255, 0.4);
+    }
 
-        .project-card {
-            background-color: white;
-            border-radius: 10px;
-            padding: 20px;
-            margin: 10px 0;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease-in-out;
-        }
+    .project-card h3 {
+      color: #00dfff;
+      margin-bottom: 10px;
+    }
 
-        .project-card:hover {
-            transform: scale(1.05);
-        }
+    .project-card p {
+      color: #ccc;
+    }
 
-        .project-card h3 {
-            font-size: 1.8em;
-            margin-bottom: 10px;
-            color: #333;
-        }
+    #contact a {
+      color: #00ffe7;
+      font-weight: bold;
+      text-decoration: none;
+    }
 
-        .project-card p {
-            font-size: 1em;
-            color: #555;
-        }
+    #contact a:hover {
+      text-decoration: underline;
+    }
 
-        #contact ul {
-            list-style-type: none;
-            padding: 0;
-        }
-
-        #contact ul li {
-            margin: 10px 0;
-        }
-
-        #contact a {
-            color: #2575fc;
-            font-size: 1.2em;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        #contact a:hover {
-            color: #f7a1b8;
-        }
-
-        footer {
-            text-align: center;
-            background-color: rgba(0, 0, 0, 0.5);
-            color: white;
-            padding: 20px;
-            margin-top: 50px;
-        }
-
-    </style>
+    footer {
+      text-align: center;
+      padding: 30px 20px;
+      color: #666;
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <h1>欢迎来到我的个人主页</h1>
-        <p>在这里你可以了解我与我的项目，欢迎探索！</p>
-    </header>
-    <main>
-        <section id="projects">
-            <h2>我的项目</h2>
-            <div class="project-card">
-                <h3>加密货币套利机器人</h3>
-                <p>我开发的加密货币套利机器人能够根据实时市场数据进行跨交易所套利和三角套利。通过精准的策略，它能帮助提高交易效率和利润。</p>
-            </div>
-            <div class="project-card">
-                <h3>量化交易平台集成</h3>
-                <p>我正在开发一个量化交易平台，结合最新的人工智能技术，为用户提供智能化的交易策略。该平台帮助用户做出更科学的投资决策。</p>
-            </div>
-        </section>
-        <section id="contact">
-            <h2>联系方式</h2>
-            <p>如果你有任何问题或合作意向，欢迎随时联系我：</p>
-            <ul>
-                <li><a href="https://t.me/AI1000168" target="_blank">Telegram: @AI1000168</a></li>
-            </ul>
-        </section>
-    </main>
-    <footer>
-        <p>&copy; 2025 个人主页 | 所有权利保留</p>
-    </footer>
+  <canvas id="bg"></canvas>
+
+  <header>
+    <h1>欢迎来到 Vave 主页</h1>
+    <p>探索智能交易的未来世界</p>
+  </header>
+
+  <main>
+    <section id="projects">
+      <h2>我的项目</h2>
+      <div class="project-card">
+        <h3>加密货币套利机器人</h3>
+        <p>这是一款全自动执行的高频套利机器人，支持跨所套利与三角套利，实时监控市场并快速下单。</p>
+      </div>
+      <div class="project-card">
+        <h3>AI量化交易平台</h3>
+        <p>集成深度学习模型与量化策略，为数字资产交易者提供更智能、更稳定的交易解决方案。</p>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2>联系方式</h2>
+      <p>欢迎联系我了解更多：</p>
+      <p><a href="https://t.me/AI1000168" target="_blank">Telegram: @AI1000168</a></p>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Vave. All rights reserved.</p>
+  </footer>
+
+  <!-- 动态粒子背景 -->
+  <script>
+    const canvas = document.getElementById('bg');
+    const ctx = canvas.getContext('2d');
+    let particlesArray;
+
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    const mouse = {
+      x: null,
+      y: null,
+      radius: 100
+    }
+
+    window.addEventListener('mousemove', function(event){
+      mouse.x = event.x;
+      mouse.y = event.y;
+    });
+
+    class Particle {
+      constructor(x, y, directionX, directionY, size, color){
+        this.x = x;
+        this.y = y;
+        this.directionX = directionX;
+        this.directionY = directionY;
+        this.size = size;
+        this.color = color;
+      }
+
+      draw(){
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2, false);
+        ctx.fillStyle = '#00ffff';
+        ctx.fill();
+      }
+
+      update(){
+        if(this.x > canvas.width || this.x < 0){
+          this.directionX = -this.directionX;
+        }
+        if(this.y > canvas.height || this.y < 0){
+          this.directionY = -this.directionY;
+        }
+
+        let dx = mouse.x - this.x;
+        let dy = mouse.y - this.y;
+        let distance = Math.sqrt(dx * dx + dy * dy);
+        if(distance < mouse.radius + this.size){
+          this.x -= dx / distance;
+          this.y -= dy / distance;
+        }
+
+        this.x += this.directionX;
+        this.y += this.directionY;
+        this.draw();
+      }
+    }
+
+    function init(){
+      particlesArray = [];
+      let numberOfParticles = 120;
+      for(let i = 0; i < numberOfParticles; i++){
+        let size = (Math.random() * 2) + 1;
+        let x = Math.random() * (innerWidth - size * 2);
+        let y = Math.random() * (innerHeight - size * 2);
+        let directionX = (Math.random() * 1) - 0.5;
+        let directionY = (Math.random() * 1) - 0.5;
+        particlesArray.push(new Particle(x, y, directionX, directionY, size));
+      }
+    }
+
+    function animate(){
+      requestAnimationFrame(animate);
+      ctx.clearRect(0, 0, innerWidth, innerHeight);
+
+      for(let i = 0; i < particlesArray.length; i++){
+        particlesArray[i].update();
+      }
+    }
+
+    window.addEventListener('resize', function(){
+      canvas.width = innerWidth;
+      canvas.height = innerHeight;
+      init();
+    });
+
+    init();
+    animate();
+  </script>
 </body>
 </html>
