@@ -3,168 +3,165 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>AI1000168 的未来空间</title>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
+  <title>AI1000168 | Future System Architect</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap" rel="stylesheet">
   <style>
-    * {
+    body {
       margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+      font-family: 'Orbitron', sans-serif;
+      background-color: #000;
+      overflow: hidden;
+      color: #FFD700;
     }
 
-    body {
-      font-family: 'Orbitron', sans-serif;
-      background: radial-gradient(ellipse at center, #0f0f0f 0%, #000 100%);
-      color: #FFD700;
-      overflow-x: hidden;
-      min-height: 100vh;
+    .hero {
+      background: url('https://ai100088.github.io/ai-cover.png') no-repeat center center;
+      background-size: cover;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 20px;
       position: relative;
     }
 
-    #stars {
+    .hero::after {
+      content: "";
       position: absolute;
-      width: 100%;
-      height: 100%;
-      background: transparent url('https://i.ibb.co/2hYkZf5/stars.gif') repeat;
-      z-index: 0;
-      animation: moveStars 100s linear infinite;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.4);
     }
 
-    @keyframes moveStars {
-      0% {background-position: 0 0;}
-      100% {background-position: -10000px 5000px;}
-    }
-
-    .container {
+    .hero-content {
       position: relative;
       z-index: 2;
-      padding: 60px 20px;
-      text-align: center;
+      color: #FFD700;
     }
 
     h1 {
       font-size: 3.5em;
-      color: #FFD700;
-      text-shadow: 0 0 20px #FFD700, 0 0 40px #FFEA00;
-      animation: pulse 3s infinite;
+      margin-bottom: 0.2em;
+      text-shadow: 0 0 20px #FFD700;
     }
 
-    @keyframes pulse {
-      0% { text-shadow: 0 0 20px #FFD700; }
-      50% { text-shadow: 0 0 40px #FFEA00; }
-      100% { text-shadow: 0 0 20px #FFD700; }
+    h2 {
+      font-size: 1.5em;
+      color: #FFA500;
+      margin-bottom: 1em;
     }
 
-    .avatar {
-      width: 150px;
-      height: 150px;
-      border-radius: 50%;
-      margin: 30px auto;
-      background-image: url('https://i.ibb.co/6ZybnKc/avatar-example.jpg');
-      background-size: cover;
-      box-shadow: 0 0 20px rgba(255, 215, 0, 0.8);
-      border: 3px solid #FFD700;
-    }
-
-    p {
-      font-size: 1.2em;
-      color: #ccc;
-      margin: 20px auto;
-      max-width: 700px;
-    }
-
-    .button {
+    .btn {
       display: inline-block;
-      padding: 14px 32px;
-      margin-top: 25px;
+      margin-top: 20px;
+      padding: 14px 28px;
       font-size: 1.1em;
       color: #000;
-      background: #FFD700;
-      border: none;
+      background-color: #FFD700;
       border-radius: 30px;
-      cursor: pointer;
-      transition: 0.3s ease;
-      box-shadow: 0 0 10px #FFD700, 0 0 20px #FFD700 inset;
       text-decoration: none;
+      transition: 0.3s;
+      box-shadow: 0 0 15px #FFD700;
     }
 
-    .button:hover {
+    .btn:hover {
       background: #fff;
-      box-shadow: 0 0 20px #FFEA00, 0 0 30px #FFD700 inset;
+      box-shadow: 0 0 25px #FFEA00;
     }
 
     .projects {
+      background: #0f0f0f;
+      padding: 60px 20px;
+      text-align: center;
+    }
+
+    .projects h3 {
+      font-size: 2.5em;
+      margin-bottom: 40px;
+      color: #FFD700;
+      text-shadow: 0 0 10px #FFD700;
+    }
+
+    .project-grid {
       display: flex;
-      justify-content: center;
       flex-wrap: wrap;
-      margin-top: 50px;
-      gap: 30px;
+      justify-content: center;
+      gap: 40px;
     }
 
     .project-card {
-      background: rgba(20, 20, 20, 0.9);
+      background: rgba(255, 215, 0, 0.05);
       border: 1px solid #FFD700;
       border-radius: 15px;
-      padding: 20px;
+      padding: 25px;
       width: 280px;
-      box-shadow: 0 0 15px rgba(255, 215, 0, 0.2);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+      backdrop-filter: blur(5px);
+      transition: all 0.3s ease-in-out;
     }
 
     .project-card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 0 25px rgba(255, 215, 0, 0.4);
+      transform: scale(1.05);
+      box-shadow: 0 0 30px rgba(255, 215, 0, 0.6);
     }
 
-    .project-card h3 {
+    .project-card h4 {
       color: #FFD700;
+      font-size: 1.4em;
       margin-bottom: 10px;
     }
 
     .project-card p {
-      color: #bbb;
+      color: #ccc;
       font-size: 0.95em;
     }
 
-    .footer {
-      margin-top: 60px;
-      font-size: 0.9em;
+    footer {
+      text-align: center;
+      padding: 30px;
       color: #888;
+      background: #000;
+      font-size: 0.9em;
     }
 
-    .footer a {
+    footer a {
       color: #FFD700;
       text-decoration: none;
     }
-
   </style>
 </head>
 <body>
-  <div id="stars"></div>
-  <div class="container">
-    <h1>你好，我是 AI1000168</h1>
-    <div class="avatar"></div>
-    <p>欢迎来到我的未来空间。探索 AI、量化交易与自动化系统的世界。</p>
-    <a class="button" href="https://t.me/AI1000168" target="_blank">联系我：@AI1000168</a>
 
-    <div class="projects">
-      <div class="project-card">
-        <h3>AI 系统</h3>
-        <p>构建智能策略模型，实现市场行为预测与交易控制。</p>
-      </div>
-      <div class="project-card">
-        <h3>自动化交易</h3>
-        <p>机器人自动下单、套利、风控，一站式管理你的资产。</p>
-      </div>
-      <div class="project-card">
-        <h3>三角套利</h3>
-        <p>实时监控币安行情，执行三币种高频套利逻辑。</p>
-      </div>
-    </div>
-
-    <div class="footer">
-      <p>© 2025 AI1000168 | <a href="https://github.com/ai100088" target="_blank">GitHub</a></p>
+  <div class="hero">
+    <div class="hero-content">
+      <h1>AI1000168</h1>
+      <h2>Future System Architect</h2>
+      <a class="btn" href="https://t.me/AI1000168" target="_blank">Contact Me: @AI1000168</a>
     </div>
   </div>
+
+  <section class="projects">
+    <h3>AI Project Modules</h3>
+    <div class="project-grid">
+      <div class="project-card">
+        <h4>NeuralX Core</h4>
+        <p>AI core engine for advanced neural network processing and data modeling.</p>
+      </div>
+      <div class="project-card">
+        <h4>QuantumTrade AI</h4>
+        <p>Autonomous trading strategy optimizer powered by deep reinforcement learning.</p>
+      </div>
+      <div class="project-card">
+        <h4>ArbitrageNet 3.0</h4>
+        <p>Cross-chain arbitrage bot using blockchain-based pricing intelligence.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    © 2025 AI1000168 | <a href="https://github.com/ai100088">GitHub</a>
+  </footer>
+
 </body>
 </html>
